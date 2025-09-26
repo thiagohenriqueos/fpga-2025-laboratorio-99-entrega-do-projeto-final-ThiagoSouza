@@ -1,0 +1,80 @@
+# =========================================================
+#  constraints_cli9.lpf  (Colorlight i9 • ECP5-45F)
+#  IO padrão: LVCMOS33
+#  Clock: 25 MHz em P3
+# =========================================================
+
+# ----------------------
+# Clock 25 MHz
+# ----------------------
+LOCATE COMP "clk" SITE "P3";
+IOBUF PORT "clk" IO_TYPE=LVCMOS33;
+FREQUENCY PORT "clk" 25 MHz;
+
+
+# ----------------------
+# Botões (4) [MSB..LSB]
+# btn[3:0] -> P17 R18 C18 U16
+# ----------------------
+LOCATE COMP "reset_n" SITE "P17";
+IOBUF PORT "reset_n" IO_TYPE=LVCMOS33;
+
+
+LOCATE COMP "dht_pin" SITE "J5";
+IOBUF PORT "dht_pin" IO_TYPE=LVCMOS33;
+
+
+# ----------------------
+# Display de 7 segmentos
+# Segmentos: a b c d e f g  -> G16 H16 H17 J17 E18 F18 G18
+# Ponto decimal: dp -> H18
+# Ânodos: an[3:0] -> F4 E6 D16 D17
+# ----------------------
+LOCATE COMP "a"  SITE "G16";
+LOCATE COMP "b"  SITE "H16";
+LOCATE COMP "c"  SITE "H17";
+LOCATE COMP "d"  SITE "J17";
+LOCATE COMP "e"  SITE "E18";
+LOCATE COMP "f"  SITE "F18";
+LOCATE COMP "g"  SITE "G18";
+LOCATE COMP "dp" SITE "F16";
+IOBUF PORT "a"  IO_TYPE=LVCMOS33;
+IOBUF PORT "b"  IO_TYPE=LVCMOS33;
+IOBUF PORT "c"  IO_TYPE=LVCMOS33;
+IOBUF PORT "d"  IO_TYPE=LVCMOS33;
+IOBUF PORT "e"  IO_TYPE=LVCMOS33;
+IOBUF PORT "f"  IO_TYPE=LVCMOS33;
+IOBUF PORT "g"  IO_TYPE=LVCMOS33;
+IOBUF PORT "dp" IO_TYPE=LVCMOS33;
+
+LOCATE COMP "an[3]" SITE "F4";
+LOCATE COMP "an[2]" SITE "E6";
+LOCATE COMP "an[1]" SITE "D16";
+LOCATE COMP "an[0]" SITE "D17";
+IOBUF PORT "an[3]" IO_TYPE=LVCMOS33;
+IOBUF PORT "an[2]" IO_TYPE=LVCMOS33;
+IOBUF PORT "an[1]" IO_TYPE=LVCMOS33;
+IOBUF PORT "an[0]" IO_TYPE=LVCMOS33;
+
+
+# ----------------------
+LOCATE COMP "led[7]" SITE "G20";
+LOCATE COMP "led[6]" SITE "K20";
+LOCATE COMP "led[5]" SITE "L20";
+LOCATE COMP "led[4]" SITE "N18";
+LOCATE COMP "led[3]" SITE "J20";
+LOCATE COMP "led[2]" SITE "L18";
+LOCATE COMP "led[1]" SITE "M18";
+LOCATE COMP "led[0]" SITE "N17";
+IOBUF PORT "led[7]" IO_TYPE=LVCMOS33;
+IOBUF PORT "led[6]" IO_TYPE=LVCMOS33;
+IOBUF PORT "led[5]" IO_TYPE=LVCMOS33;
+IOBUF PORT "led[4]" IO_TYPE=LVCMOS33;
+IOBUF PORT "led[3]" IO_TYPE=LVCMOS33;
+IOBUF PORT "led[2]" IO_TYPE=LVCMOS33;
+IOBUF PORT "led[1]" IO_TYPE=LVCMOS33;
+IOBUF PORT "led[0]" IO_TYPE=LVCMOS33;
+
+# =========================================================
+# Fim
+# =========================================================
