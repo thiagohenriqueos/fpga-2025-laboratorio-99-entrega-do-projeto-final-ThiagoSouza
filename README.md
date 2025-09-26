@@ -57,7 +57,7 @@ A tabela abaixo resume a pinagem utilizada para a placa Colorlight i9.
 | `a`, `b`, `c`, `d` | G16, H16, H17, J17 | Segmentos do Display 7-Seg |
 | `e`, `f`, `g`, `dp` | E18, F18, G18, F16 | Segmentos do Display 7-Seg |
 |                  |               |                               |
-| `an[3]`          |      F4       | Ânodo do Dígito 4 (Milhar)    |
-| `an[2]`          |      E6       | Ânodo do Dígito 3 (Centena)   |
-| `an[1]`          |      D16      | Ânodo do Dígito 2 (Dezena)    |
-| `an[0]`          |      D17      | Ânodo do Dígito 1 (Unidade)   |
+| `an[3]`          |      F4       | Ânodo do Dígito 4 (Centena)    |
+| `an[2]`          |      E6       | Ânodo do Dígito 3 (Dezena)   |
+| `an[1]`          |      D16      | Ânodo do Dígito 2 (Unidade)    |
+| `an[0]`          |      D17      | Ânodo do Dígito 1 (Decimal)   |
