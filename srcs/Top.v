@@ -6,6 +6,9 @@
 module top (
     input  wire        clk,
     input  wire        reset_n,
+    input  wire        SINAL_PARA_SELECIONAR_TEMP,
+    input  wire        SINAL_PARA_SELECIONAR_UMID,
+
     inout  wire        dht_pin,
 
     // Saídas para o display de 7 segmentos
@@ -41,15 +44,28 @@ module top (
         .estado_depuracao(estado_fsm_dht)
     );
 
-    // Mux que alterna entre temperatura e umidade a cada 1 segundo
-    MuxComTimer2s mux_timer_inst (
-        .clk           (clk),
-        .reset_n       (reset_n),
-        .dado_a        (temperatura_sensor),
-        .dado_b        (umidade_sensor),
-        .saida_mux     (dado_para_display),
-        .saida_seletor (seletor_mux)
-    );
+//--------------------------------------------------------------------------------
+// Instância do Módulo Híbrido:
+// - 'saida_mux' é controlada pelas bordas de descida em 'control_a' e 'control_b'.
+// - 'seletor_timer' é uma saída que alterna a cada 1 segundo.
+//--------------------------------------------------------------------------------
+MuxHibrido mux_hibrido_inst (
+    // Sinais Globais
+    .clk                  (clk),
+    .reset_n              (reset_n),
+
+    // Entradas do MUX
+    .dado_a               (temperatura_sensor),
+    .dado_b               (umidade_sensor),
+
+    // Entradas de Controle por Borda (ATENÇÃO: Conecte seus sinais aqui)
+    .control_a            (SINAL_PARA_SELECIONAR_TEMP), // Conecte o sinal cuja borda de descida deve selecionar a temperatura
+    .control_b            (SINAL_PARA_SELECIONAR_UMID), // Conecte o sinal cuja borda de descida deve selecionar a umidade
+
+    // Saídas
+    .saida_mux            (dado_para_display),
+    .saida_seletor_timer  (seletor_mux) // O seletor do timer agora se chama 'saida_seletor_timer'
+);
 
     // O gatilho para iniciar a leitura é o próprio sinal do seletor do MUX.
     // A FSM do leitor é projetada para lidar com um sinal de nível.
